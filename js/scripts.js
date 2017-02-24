@@ -26,7 +26,7 @@ $(function(){
           var rowLength = Math.floor(rowLength+1);
           console.log("is not integer: " + rowLength)
 
-          for (var i = 0; i < (rowLength-2); i++) {
+          for (var i = 0; i < (rowLength-1); i++) {
             arrayContainer.push(new Array());
           }
           return rowLength;
@@ -36,14 +36,19 @@ $(function(){
         console.log(parameterRow);
 
 //      FILLS ARRAYS WITH INPUT LETTERS
+        var lenSplit2 = lenSplit.map(function(repeat) {
+          return repeat;
+        });
+        console.log(lenSplit2);
         for (var x = 0; x < lenSplit.length; x++) {
           debugger;
-          var counter = (if (arrayContainer[0].length <= parameterRow) {
-            var takeMe = lenSplit.shift();
+          if (arrayContainer[0].length < parameterRow) {
+            var takeMe = lenSplit2.shift();
             arrayContainer[0].push(takeMe);
-          } else {
-            return takeMe;
-          })
+          } else if (arrayContainer[1].length < parameterRow) {
+            var takeMe2 = lenSplit2.shift();
+            arrayContainer[1].push(takeMe2);
+          }
         }
       console.log(arrayContainer);
       var encrypted = arrayContainer.join('');
