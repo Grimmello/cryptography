@@ -21,7 +21,7 @@ $(function(){
           return rowLength;
         }
 
-//      PERFORMS THIS IF NO PERFECT SQUARE
+//      PERFORMS THIS IF NOT PERFECT SQUARE
         else
           var rowLength = Math.floor(rowLength+1);
           console.log("is not integer: " + rowLength)
@@ -40,15 +40,18 @@ $(function(){
           return repeat;
         });
         console.log(lenSplit2);
-        for (var x = 0; x < lenSplit.length; x++) {
-          debugger;
-          if (arrayContainer[0].length < parameterRow) {
-            var takeMe = lenSplit2.shift();
-            arrayContainer[0].push(takeMe);
-          } else if (arrayContainer[1].length < parameterRow) {
-            var takeMe2 = lenSplit2.shift();
-            arrayContainer[1].push(takeMe2);
+        for (var x = 0; x < arrayContainer.length; x++) {
+          for (var i = 0; i < lenSplit.length; i++) {
+            if (arrayContainer[x].length < parameterRow) {
+              var takeMe = lenSplit2.shift();
+              arrayContainer[x].push(takeMe);
+            }
           }
+
+          // else if (arrayContainer[x+1].length < parameterRow) {
+          //   var takeMe2 = lenSplit2.shift();
+          //   arrayContainer[x+1].push(takeMe2);
+          // }
         }
       console.log(arrayContainer);
       var encrypted = arrayContainer.join('');
